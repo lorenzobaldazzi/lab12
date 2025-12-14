@@ -1,0 +1,5 @@
+C:\Users\loren\Documents\EserciziJava\lab12\123-es3\build\classes\java\main\it\unibo\es3\GUI.class
+C:\Users\loren\Documents\EserciziJava\lab12\123-es3\build\classes\java\main\it\unibo\es3\Logics.class
+C:\Users\loren\Documents\EserciziJava\lab12\123-es3\build\classes\java\main\it\unibo\es3\LogicsImpl.class
+C:\Users\loren\Documents\EserciziJava\lab12\123-es3\build\classes\java\main\it\unibo\es3\Pair.class
+C:\Users\loren\Documents\EserciziJava\lab12\123-es3\build\classes\java\main\it\unibo\es3\Test.class

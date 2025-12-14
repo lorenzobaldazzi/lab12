@@ -1,13 +1,16 @@
 package it.unibo.es1;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of the Logics interface.
  */
 public class LogicsImpl implements Logics {
 
-    private static final String ERROR_MESSAGE = "Unimplemented method";
+    private final List<Integer> buttonValues;
 
     /**
      * Constructor.
@@ -15,7 +18,10 @@ public class LogicsImpl implements Logics {
      * @param size the size of the logics
      */
     public LogicsImpl(final int size) {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
+        this.buttonValues = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+            this.buttonValues.add(0);
+        }
     }
 
     /**
@@ -23,7 +29,7 @@ public class LogicsImpl implements Logics {
      */
     @Override
     public int size() {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
+        return this.buttonValues.size();
     }
 
     /**
@@ -31,7 +37,7 @@ public class LogicsImpl implements Logics {
      */
     @Override
     public List<Integer> values() {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
+        return Collections.unmodifiableList(buttonValues);
     }
 
     /**
@@ -39,7 +45,11 @@ public class LogicsImpl implements Logics {
      */
     @Override
     public List<Boolean> enabledStates() {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
+        final List<Boolean> enable = new ArrayList<>(this.buttonValues.size());
+        for (final int value: buttonValues) {
+            enable.add(value != buttonValues.size());
+        }
+        return enable;
     }
 
     /**
@@ -47,7 +57,8 @@ public class LogicsImpl implements Logics {
      */
     @Override
     public int hit(final int elem) {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
+        buttonValues.set(elem, buttonValues.get(elem) + 1);
+        return buttonValues.get(elem);
     }
 
     /**
@@ -55,7 +66,7 @@ public class LogicsImpl implements Logics {
      */
     @Override
     public String result() {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
+        return buttonValues.stream().map(String::valueOf).collect(Collectors.joining("|"));
     }
 
     /**
@@ -63,6 +74,6 @@ public class LogicsImpl implements Logics {
      */
     @Override
     public boolean toQuit() {
-        throw new UnsupportedOperationException(ERROR_MESSAGE);
+        return buttonValues.stream().distinct().count() <= 1;
     }
 }
